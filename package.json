@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run generate-env && ng serve",
+    "build": "npm run generate-env -- environment.production.ts && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "generate-env": "npx ts-node -O \"{\\\"module\\\":\\\"commonjs\\\"}\" -e \"const fs = require('fs'); const path = require('path'); const { environment } = require(path.join(process.cwd(), './src/environments/', (process.argv[1] || 'environment.development.ts'))); fs.writeFileSync(path.join(process.cwd(), './src/assets/environment.json'), JSON.stringify(environment));\""
+
   },
   "private": true,
   "dependencies": {
@@ -33,6 +35,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "^3.3.1",
     "typescript": "~5.4.2"
   }
 }
