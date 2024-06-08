@@ -1,21 +1,7 @@
-import { Environment } from './environment.model';
-import { EnvironmentLoader } from './environment.loader';
+import { Environment } from './models/environment.model';
+import { EnvironmentLoader } from './utils/environment-loader.util';
+import { createProxy } from './utils/create-proxy.util';
 
-export const environment: Environment = createProxy({} as Environment);
-
-function createProxy<T extends object>(target: T, path = ''): T {
-    return new Proxy(target, {
-        get: function (obj, prop: string) {
-            const fullPath = path ? `${path}.${prop.toString()}` : prop;
-
-            const value = fullPath
-                .split('.')
-                .reduce((a, c) => a[c], EnvironmentLoader.environment as any);
-
-            if (value && typeof value === 'object') {
-                return createProxy(value, fullPath.toString());
-            }
-            return value;
-        },
-    });
-}
+export const environment: Environment = createProxy(
+    {} as Environment
+);

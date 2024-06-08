@@ -1,4 +1,4 @@
-import { Environment } from './environment.model';
+import { Environment } from '../models/environment.model';
 
 export class EnvironmentLoader {
     private static env: Environment;

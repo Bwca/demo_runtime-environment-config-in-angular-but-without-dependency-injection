@@ -1,25 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 
-import { ApiService } from './services/api/api.service';
+import { environment } from '../environments/environment';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     imports: [RouterOutlet, AsyncPipe, JsonPipe, NgIf],
-    template: `<pre *ngIf="posts$ | async as posts">
-      {{ posts | json }}
-    </pre
-        >
-        <pre *ngIf="users$ | async as users">
-      {{ users | json }}
-    </pre
-        >`,
+    template: ` <p>
+        And now for something completely different:
+        {{ environment.and.now.for.something.completely.different }}
+    </p>`,
 })
-export class AppComponent {
-    public posts$ = this.apiService.getSomePosts();
-    public users$ = this.apiService.getSomeUsers();
+export class AppComponent implements OnInit {
+    public readonly env = environment;
+    constructor(private httpClient: HttpClient) {}
 
-    constructor(private apiService: ApiService) {}
+    protected readonly environment = environment;
+
+    public ngOnInit(): void {
+        this.httpClient.get(`${environment.api}/posts`).subscribe(console.log);
+    }
 }
