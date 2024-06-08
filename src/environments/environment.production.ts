@@ -1,6 +1,6 @@
 import { Environment } from './models/environment.model';
 
 export const environment: Environment = {
-    and: { now: { for: { something: { completely: { different: '' } } } } },
+    something: { completely: { different: 'A Scotsman on a horse!' } },
     api: 'https://jsonplaceholder.typicode.com',
 };

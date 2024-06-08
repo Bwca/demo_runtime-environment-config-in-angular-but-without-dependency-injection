@@ -1,6 +1,6 @@
 import { Environment } from './models/environment.model';
 
 export const environment: Environment = {
-    and: { now: { for: { something: { completely: { different: 'nothing' } } } } },
+    something: { completely: { different: 'A man with nine legs.' } },
     api: 'foo',
 };

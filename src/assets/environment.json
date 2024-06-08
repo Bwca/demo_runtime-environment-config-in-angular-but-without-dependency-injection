@@ -1,10 +1,4 @@
 {
-    "and": {
-        "now": {
-            "for": {
-                "something": { "completely": { "different": "a scotsman on a horse!" } }
-            }
-        }
-    },
-    "api": "foo"
+    "something": { "completely": { "different": "A Scotsman on a horse!" } },
+    "api": "https://jsonplaceholder.typicode.com"
 }

@@ -1,25 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
 
 import { environment } from '../environments/environment';
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, AsyncPipe, JsonPipe, NgIf],
     template: `<p>
+        Api: {{ environment.api }}
+        <br />
         And now for something completely different:
-        {{ environment.and.now.for.something.completely.different }}
+        {{ environment.something.completely.different }}
     </p>`,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     protected readonly environment = environment;
-
-    constructor(private httpClient: HttpClient) {}
-
-    public ngOnInit(): void {
-        this.httpClient.get(`${environment.api}/posts`).subscribe(console.log);
-    }
 }
