@@ -9,16 +9,15 @@ import { environment } from '../environments/environment';
     selector: 'app-root',
     standalone: true,
     imports: [RouterOutlet, AsyncPipe, JsonPipe, NgIf],
-    template: ` <p>
+    template: `<p>
         And now for something completely different:
         {{ environment.and.now.for.something.completely.different }}
     </p>`,
 })
 export class AppComponent implements OnInit {
-    public readonly env = environment;
-    constructor(private httpClient: HttpClient) {}
-
     protected readonly environment = environment;
+
+    constructor(private httpClient: HttpClient) {}
 
     public ngOnInit(): void {
         this.httpClient.get(`${environment.api}/posts`).subscribe(console.log);

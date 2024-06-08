@@ -1,1 +1,10 @@
-{"and":{"now":{"for":{"something":{"completely":{"different":"a scotsman on a horse!"}}}}},"api":"foo"}
+{
+    "and": {
+        "now": {
+            "for": {
+                "something": { "completely": { "different": "a scotsman on a horse!" } }
+            }
+        }
+    },
+    "api": "foo"
+}
